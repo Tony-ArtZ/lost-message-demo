@@ -106,10 +106,10 @@ export default function DetectiveWordle() {
 
   return (
     <div className="w-full max-w-lg mx-auto space-y-8">
-      <div className="flex justify-end">
+      <div className="flex justify-center">
         <button
           onClick={() => setShowHelp(true)}
-          className="px-4 py-2 text-sm bg-vintage-frame-dark text-vintage-paper rounded-lg hover:bg-vintage-frame-light transition-colors duration-300"
+          className="px-6 py-2.5 text-base bg-vintage-frame-dark text-vintage-paper rounded-lg hover:bg-vintage-frame-light transition-colors duration-300 border border-vintage-paper/20"
         >
           How to Play
         </button>

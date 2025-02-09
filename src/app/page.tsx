@@ -5,10 +5,10 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 bg-vintage-dark text-vintage-paper">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold mb-12 text-vintage-paper/90">
+        <h1 className="text-4xl font-bold  text-vintage-paper/90">
           Lost Messages: Demo
         </h1>
-        <div className="font-bold text-sm  text-vintage-paper/80 max-w-md space-y-2">
+        {/* <div className="font-bold text-sm  text-vintage-paper/80 max-w-md space-y-2">
           <p>
             All items are hidden in the image below. Click the image to magnify
             and inspect closely!
@@ -16,7 +16,7 @@ export default function Home() {
           <p className="text-vintage-paper/70">
             Once you spot an item, type its name in the boxes below like Wordle
           </p>
-        </div>
+        </div> */}
       </div>
       <DetectiveWordle />
       <div className="space-y-6 text-center">
