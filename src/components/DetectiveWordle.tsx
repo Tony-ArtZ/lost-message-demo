@@ -5,6 +5,7 @@ import { WordleItem, GameState } from "../types/game";
 import Image from "next/image";
 import ImageModal from "./ImageModal";
 import CompletionModal from "./CompletionModal";
+import HowToPlay from "./HowToPlay";
 
 const WORDS: WordleItem[] = [
   {
@@ -47,6 +48,7 @@ export default function DetectiveWordle() {
   const [showHint, setShowHint] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   const currentWord = WORDS[currentWordIndex];
 
@@ -93,8 +95,26 @@ export default function DetectiveWordle() {
     setCurrentGuess("");
   };
 
+  // Add new function to check if word has been solved
+  const isWordSolved = (word: WordleItem) => {
+    return (
+      guesses.includes(word.word) ||
+      word.order < currentWordIndex ||
+      (word.order === currentWordIndex && gameState === "completed")
+    );
+  };
+
   return (
     <div className="w-full max-w-lg mx-auto space-y-8">
+      <div className="flex justify-end">
+        <button
+          onClick={() => setShowHelp(true)}
+          className="px-4 py-2 text-sm bg-vintage-frame-dark text-vintage-paper rounded-lg hover:bg-vintage-frame-light transition-colors duration-300"
+        >
+          How to Play
+        </button>
+      </div>
+
       <div className="vintage-frame">
         <div
           className="relative w-full h-72 cursor-pointer"
@@ -113,9 +133,8 @@ export default function DetectiveWordle() {
               alt={item.word}
               fill
               className={`object-contain transition-all duration-500 ${
-                item.order <= currentWordIndex &&
-                (item.order < currentWordIndex || gameState === "completed")
-                  ? "drop-shadow-glow-strong opacity-100"
+                isWordSolved(item)
+                  ? "drop-shadow-glow-strong opacity-100 animate-pulse-slow"
                   : "opacity-30"
               }`}
             />
@@ -192,6 +211,8 @@ export default function DetectiveWordle() {
           setGuesses([]);
         }}
       />
+
+      <HowToPlay isOpen={showHelp} onClose={() => setShowHelp(false)} />
     </div>
   );
 }

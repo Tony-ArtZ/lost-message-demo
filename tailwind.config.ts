@@ -26,8 +26,24 @@ export default {
         },
       },
       dropShadow: {
-        glow: "0 0 12px rgba(232, 213, 183, 0.3)",
-        "glow-strong": "0 0 20px rgba(232, 213, 183, 0.5)",
+        glow: [
+          "0 0 15px rgba(232, 213, 183, 0.5)",
+          "0 0 30px rgba(232, 213, 183, 0.3)",
+        ],
+        "glow-strong": [
+          "0 0 20px rgba(232, 213, 183, 0.7)",
+          "0 0 40px rgba(232, 213, 183, 0.5)",
+          "0 0 60px rgba(232, 213, 183, 0.3)",
+        ],
+      },
+      keyframes: {
+        pulse: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" },
+        },
+      },
+      animation: {
+        "pulse-slow": "pulse 3s ease-in-out infinite",
       },
     },
   },
