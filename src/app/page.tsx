@@ -24,7 +24,7 @@ export default function Home() {
           This is just a small puzzle for entertainment. Want to have the
           complete detective experience? Solve a chilling case with interactive
           evidence, uncover hidden clues, experience unexpected twists, and dive
-          into an immersive story, then
+          into an immersive story.
         </p>
         <Link
           href="https://kiitfest.org/dashboard/events?event=914433c3-15bd-451b-9d24-c65a3174fc53"
