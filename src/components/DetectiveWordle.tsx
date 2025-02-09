@@ -6,6 +6,7 @@ import Image from "next/image";
 import ImageModal from "./ImageModal";
 import CompletionModal from "./CompletionModal";
 import HowToPlay from "./HowToPlay";
+import VirtualKeyboard from "./VirtualKeyboard";
 
 const WORDS: WordleItem[] = [
   {
@@ -52,22 +53,35 @@ export default function DetectiveWordle() {
 
   const currentWord = WORDS[currentWordIndex];
 
+  const handleKeyPress = (key: string) => {
+    if (gameState !== "playing") return;
+    if (currentGuess.length < currentWord.word.length) {
+      setCurrentGuess((prev) => (prev + key).toUpperCase());
+    }
+  };
+
+  const handleBackspace = () => {
+    if (gameState !== "playing") return;
+    setCurrentGuess((prev) => prev.slice(0, -1));
+  };
+
+  const handleEnter = () => {
+    if (gameState !== "playing") return;
+    if (currentGuess.length === currentWord.word.length) {
+      submitGuess();
+    }
+  };
+
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
       if (gameState !== "playing") return;
 
-      if (
-        e.key === "Enter" &&
-        currentGuess.length === currentWord.word.length
-      ) {
-        submitGuess();
+      if (e.key === "Enter") {
+        handleEnter();
       } else if (e.key === "Backspace") {
-        setCurrentGuess((prev) => prev.slice(0, -1));
-      } else if (
-        currentGuess.length < currentWord.word.length &&
-        e.key.match(/^[a-zA-Z]$/)
-      ) {
-        setCurrentGuess((prev) => (prev + e.key).toUpperCase());
+        handleBackspace();
+      } else if (e.key.match(/^[a-zA-Z]$/)) {
+        handleKeyPress(e.key);
       }
     };
 
@@ -170,6 +184,12 @@ export default function DetectiveWordle() {
           </div>
         )}
       </div>
+
+      <VirtualKeyboard
+        onKeyPress={handleKeyPress}
+        onEnter={handleEnter}
+        onBackspace={handleBackspace}
+      />
 
       <div className="space-y-4">
         <div className="text-center text-xl font-bold mb-4">
