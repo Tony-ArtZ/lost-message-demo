@@ -26,12 +26,11 @@ const CompletionModal: FC<CompletionModalProps> = ({ isOpen, onClose }) => {
           >
             Play Again
           </button>
-          <Link
-            href="https://kiitfest.org/dashboard/events?event=914433c3-15bd-451b-9d24-c65a3174fc53"
-            className="flex-1 px-6 py-3 bg-vintage-frame-light text-vintage-paper rounded-lg hover:bg-vintage-frame-dark transition-colors duration-300"
-          >
-            Register Now
-          </Link>
+          <button className="flex-1 justify-center items-center px-6 py-3 bg-vintage-frame-light text-vintage-paper rounded-lg hover:bg-vintage-frame-dark transition-colors duration-300">
+            <Link href="https://kiitfest.org/dashboard/events?event=914433c3-15bd-451b-9d24-c65a3174fc53">
+              Register Now
+            </Link>
+          </button>
         </div>
       </div>
     </div>

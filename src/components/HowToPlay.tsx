@@ -15,6 +15,18 @@ const HowToPlay: FC<HowToPlayProps> = ({ isOpen, onClose }) => {
           How to Play
         </h2>
         <div className="space-y-4 text-vintage-paper">
+          <div className="p-4 border-2 border-vintage-paper rounded-lg mb-6 space-y-2">
+            <p className="font-bold text-lg text-center">
+              All items are hidden in the image above
+            </p>
+            <p className="text-center">
+              1. Click image to inspect closely
+              <br />
+              2. Find the hidden item
+              <br />
+              3. Type its name in the boxes below
+            </p>
+          </div>
           <p>Find the detective&apos;s items by guessing each word:</p>
           <ul className="list-disc list-inside space-y-2">
             <li>Guess one item at a time in sequence</li>
